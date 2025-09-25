@@ -14,7 +14,7 @@ module.exports = {
     NEWS_JSON_URL: '',
     BOT_NAME: '⟆⟆ TEDDY-XMD ⟅⟅',
     OWNER_NAME: 'Teddy ',
-    OWNER_NUMBER: '2348157763037',
+    OWNER_NUMBER: '254799963583',
     BOT_VERSION: '1.0.0',
     BOT_FOOTER: '> © Teddy xmd bot',
     CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb6NveDBPzjPa4vIRt3n'
