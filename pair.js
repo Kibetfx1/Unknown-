@@ -38,25 +38,25 @@ const config = {
     AUTO_LIKE_EMOJI: ['🧩', '🍉', '💜', '🌸', '🪴', '💊', '💫', '🍂', '🌟', '🎋', '😶‍🌫️', '🫀', '🧿', '👀', '🤖', '🚩', '🥰', '🗿', '💜', '💙', '🌝', '🖤', '💚'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/JqGh3LtWerw35NILvYQlFb',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/KnL0Ft6gvHDGP2lH3oN5Z5?mode=ems_copy_t',
     ADMIN_LIST_PATH: './admin.json',
-    IMAGE_PATH: 'https://files.catbox.moe/oekb4n.jpg',
-    NEWSLETTER_JID: '120363400717651069@newsletter',
+    IMAGE_PATH: 'https://files.catbox.moe/a0mj3n.jpg',
+    NEWSLETTER_JID: '120363421104812135@newsletter',
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     NEWS_JSON_URL: '',
-    BOT_NAME: '⟆⟆ 𝙉𝙊𝙑𝘼 𝘿𝙀𝙑𝙎 𝙈𝘿 ⟅⟅',
-    OWNER_NAME: '@Nova Devs',
-    OWNER_NUMBER: '2348157763037',
+    BOT_NAME: '⟆⟆ TEDDY XMD  ⟅⟅',
+    OWNER_NAME: '@Teddy',
+    OWNER_NUMBER: '254799963583',
     BOT_VERSION: '1.0.0',
-    BOT_FOOTER: '> © 𝙉𝙊𝙑𝘼 𝘿𝙀𝙑𝙎',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbArJKqJf05kN32opJ2l',
+    BOT_FOOTER: '> © Teddy Tech',
+    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb6NveDBPzjPa4vIRt3n',
     BUTTON_IMAGES: {
-        ALIVE: 'https://files.catbox.moe/w0j37r.jpg',
-        MENU: 'https://files.catbox.moe/oekb4n.jpg',
-        OWNER: 'https://files.catbox.moe/oekb4n.jpg',
-        SONG: 'https://files.catbox.moe/ceblz0.jpg',
-        VIDEO: 'https://files.catbox.moe/np2egr.jpg'
+        ALIVE: 'https://files.catbox.moe/a0mj3n.jpg',
+        MENU: 'https://files.catbox.moe/a0mj3n.jpg',
+        OWNER: 'https://files.catbox.moe/a0mj3n.jpg',
+        SONG: 'https://files.catbox.moe/a0mj3n.jpg',
+        VIDEO: 'https://files.catbox.moe/a0mj3n.jpg'
     }
 };
 
@@ -487,11 +487,11 @@ function setupCommandHandlers(socket, number) {
                     const minutes = Math.floor((uptime % 3600) / 60);
                     const seconds = Math.floor(uptime % 60);
 
-                    const title = '🪨 Hellow, *"Itz: ZEUS-MINI"*';
-                    const content = `*© bY|* kelumXz & Danuz\n` +                                   `*◯ A B O U T*\n` +
+                    const title = '🪨 Hellow, *"Itz: TEDDY-XMD-MINI"*';
+                    const content = `*© bY|* Teddy \n` +                                   `*◯ A B O U T*\n` +
                                    `> This is a lightweight, stable WhatsApp bot designed to run 24/7. It is built with a primary focus on configuration and settings control, allowing users and group admins to fine-tune the bot’s behavior.\n` +
                                    `*◯ D E P L O Y*\n` +
-                                   `> *Webiste* https://kelumxz-md.vercel.app`;
+                                   `> *Webiste* https://free-teddy-xmd-bot.onrender.com`;
                     const footer = config.BOT_FOOTER;
 
                     await socket.sendMessage(sender, {
@@ -516,8 +516,8 @@ case 'owner': {
         'VERSION:3.0\n' +
         'FN:NOVA DEVS\n' +
         'ORG:NOVA DEVS\n' +
-        'TEL;type=CELL;type=VOICE;waid=2348157763037:+234 815 776 3037\n' +
-        'EMAIL:novadevsss@gmail.com\n' +
+        'TEL;type=CELL;type=VOICE;waid=254799963583:+254799963583\n' +
+        'EMAIL:imteddytech@gmail.com\n' +
         'END:VCARD';
 
     // Send contact card first
@@ -531,7 +531,7 @@ case 'owner': {
     // Then send image with buttons as separate message
     await socket.sendMessage(sender, {
         image: { url: config.BUTTON_IMAGES.OWNER },
-        caption: '*💗 𝙉𝙤𝙫𝙖 𝙈𝘿 OWNER DETAILS*',
+        caption: '*💗 TEDDY-XMD OWNER DETAILS*',
         buttons: [
             { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 },
             { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '🤖 BOT INFO' }, type: 1 }
@@ -547,7 +547,7 @@ case 'owner': {
                     const minutes = Math.floor((uptime % 3600) / 60);
                     const seconds = Math.floor(uptime % 60);
                         
-                    const title = '*💀 𝙉𝙤𝙫𝙖 𝙈𝘿 System 💥*';
+                    const title = '*💀 Teddy xmd System 💥*';
                     const content = `┏━━━━━━━━━━━━━━━━\n` +
                         `┃🤖 \`ʙᴏᴛ ɴᴀᴍᴇ\` : ${config.BOT_NAME}\n` +
                         `┃🔖 \`ᴠᴇʀsɪᴏɴ\` : ${config.BOT_VERSION}\n` +
@@ -641,7 +641,7 @@ case 'owner': {
 
                         const { title, uploader, duration, quality, format, thumbnail, download } = data.data.result;
 
-                        const titleText = '*༊ NOVA MD SONG DOWNLOAD*';
+                        const titleText = '*༊ TEDDY XMD SONG DOWNLOAD*';
                         const content = `┏━━━━━━━━━━━━━━━━\n` +
                             `┃📝 \`Title\` : ${video.title}\n` +
                             `┃📈 \`Views\` : ${video.views}\n` +
