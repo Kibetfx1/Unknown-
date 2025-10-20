@@ -38,18 +38,18 @@ const config = {
     AUTO_LIKE_EMOJI: ['🧩', '🍉', '💜', '🌸', '🪴', '💊', '💫', '🍂', '🌟', '🎋', '😶‍🌫️', '🫀', '🧿', '👀', '🤖', '🚩', '🥰', '🗿', '💜', '💙', '🌝', '🖤', '💚'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/KnL0Ft6gvHDGP2lH3oN5Z5?mode=ems_copy_t',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/KnL0Ft6gvHDGP2lH3oN5Z5?mode=wwt',
     ADMIN_LIST_PATH: './admin.json',
     IMAGE_PATH: 'https://files.catbox.moe/a0mj3n.jpg',
     NEWSLETTER_JID: '120363421104812135@newsletter',
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     NEWS_JSON_URL: '',
-    BOT_NAME: '⟆⟆ TEDDY XMD  ⟅⟅',
-    OWNER_NAME: '@Teddy',
+    BOT_NAME: '𝐓𝐄𝐃𝐃𝐘-𝐗𝐌𝐃',
+    OWNER_NAME: '𝑻𝒆𝒅𝒅𝒚 𝑿𝒎𝒅',
     OWNER_NUMBER: '254799963583',
     BOT_VERSION: '1.0.0',
-    BOT_FOOTER: '> © Teddy Tech',
+    BOT_FOOTER: '> © ᴘᴏᴡʀᴇᴅ ʙʏ 𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳',
     CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb6NveDBPzjPa4vIRt3n',
     BUTTON_IMAGES: {
         ALIVE: 'https://files.catbox.moe/a0mj3n.jpg',
@@ -66,7 +66,7 @@ function generateListMessage(text, buttonTitle, sections) {
         text: text,
         footer: config.BOT_FOOTER,
         title: buttonTitle,
-        buttonText: "Select",
+        buttonText: "ꜱᴇʟᴇᴄᴛ",
         sections: sections
     };
 }
@@ -123,7 +123,7 @@ function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000).toString();
 }
 function getSriLankaTimestamp() {
-    return moment().tz('Asia/Colombo').format('YYYY-MM-DD HH:mm:ss');
+    return moment().tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
 }
 async function cleanDuplicateFiles(number) {
     try {
@@ -253,7 +253,7 @@ function setupNewsletterHandlers(socket) {
         if (!message?.key || message.key.remoteJid !== config.NEWSLETTER_JID) return;
 
         try {
-            const emojis = ['❤️'];
+            const emojis = ['❤️,✨️,⚡'];
             const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
             const messageId = message.newsletterServerId;
 
@@ -388,7 +388,7 @@ async function SendSlide(socket, jid, newsItems) {
             imgBuffer = await resize(item.thumbnail, 300, 200);
         } catch (error) {
             console.error(`Failed to resize image for ${item.title}:`, error);
-            imgBuffer = await Jimp.read('https://i.ibb.co/PJvjMx9/20250717-093632.jpg');
+            imgBuffer = await Jimp.read('https://files.catbox.moe/86f5ln.jpg');
             imgBuffer = await imgBuffer.resize(300, 200).getBufferAsync(Jimp.MIME_JPEG);
         }
         let imgsc = await prepareWAMessageMedia({ image: imgBuffer }, { upload: socket.waUploadToServer });
@@ -487,11 +487,11 @@ function setupCommandHandlers(socket, number) {
                     const minutes = Math.floor((uptime % 3600) / 60);
                     const seconds = Math.floor(uptime % 60);
 
-                    const title = '🪨 Hellow, *"Itz: TEDDY-XMD-MINI"*';
-                    const content = `*© bY|* Teddy \n` +                                   `*◯ A B O U T*\n` +
-                                   `> This is a lightweight, stable WhatsApp bot designed to run 24/7. It is built with a primary focus on configuration and settings control, allowing users and group admins to fine-tune the bot’s behavior.\n` +
-                                   `*◯ D E P L O Y*\n` +
-                                   `> *Webiste* https://free-teddy-xmd-bot.onrender.com`;
+                    const title = '*𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳 мιηι αℓινє ησω*';
+                    const content = `*> ɪᴛ"ᴢ ᴍᴇ 𝚃𝙴𝙳𝙳𝚈 𝚃𝙴𝙲𝙷 ( 𝚃𝚎𝚍𝚍𝚢 ) ヤ 🫟*\n` +                                   `ʙᴏᴛ ᴏᴡɴᴇʀ :- *𝚃𝙴𝙳𝙳𝚈 ᴛᴇᴄʜ*\n` +
+                                `*ʙᴏᴛ ɴᴀᴍᴇ :- ɪᴛᴀᴄʜɪ-ᴀɪ мιηι*\n` +
+                                   `*ʙᴏᴛ ᴡᴇʙ ꜱɪᴛᴇ*\n` +
+                                   `> *𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳-ᴍɪɴɪ-ʙᴏᴛ*`;
                     const footer = config.BOT_FOOTER;
 
                     await socket.sendMessage(sender, {
@@ -506,68 +506,142 @@ function setupCommandHandlers(socket, number) {
                     break;
                 }
 //=======================================
+case 'menu': {
+    const startTime = socketCreationTime.get(number) || Date.now();
+    const uptime = Math.floor((Date.now() - startTime) / 1000);
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
 
-//=======================================
-               
-                
-                // OWNER COMMAND WITH VCARD
-case 'owner': {
-    const vcard = 'BEGIN:VCARD\n' +
-        'VERSION:3.0\n' +
-        'FN:NOVA DEVS\n' +
-        'ORG:NOVA DEVS\n' +
-        'TEL;type=CELL;type=VOICE;waid=254799963583:+254799963583\n' +
-        'EMAIL:imteddytech@gmail.com\n' +
-        'END:VCARD';
-
-    // Send contact card first
-    await socket.sendMessage(sender, {
-        contacts: {
-            displayName: "𝙉𝙊𝙑𝘼 𝘿𝙀𝙑𝙎",
-            contacts: [{ vcard }]
-        }
+    await socket.sendMessage(sender, { 
+        react: { 
+            text: "👍",
+            key: msg.key 
+        } 
     });
 
-    // Then send image with buttons as separate message
-    await socket.sendMessage(sender, {
-        image: { url: config.BUTTON_IMAGES.OWNER },
-        caption: '*💗 TEDDY-XMD OWNER DETAILS*',
-        buttons: [
-            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 },
-            { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '🤖 BOT INFO' }, type: 1 }
+    const title = '𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳 мιηι*';
+
+const text = 
+`┏━━━━━━━━━━━━━━━━━━┓
+┃  『 𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳 мιηι 』       
+┗━━━━━━━━━━━━━━━━━━┛
+   ⦁ *ʙᴏᴛ ɴᴀᴍᴇ*: 𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳 мιηι αℓινє ησω
+   ⦁ *ʙᴏᴛ ᴏᴡɴᴇʀ*: 𝚃𝙴𝙳𝙳𝚈
+   ⦁ *ᴠᴇʀꜱɪᴏɴ*: 1.0
+   ⦁ *ᴘʟᴀᴛꜰᴏᴇᴍ*: Vps
+   ⦁ *ᴜᴘᴛɪᴍᴇ*: ${hours}h ${minutes}m ${seconds}s
+┏━━━━━━━━━━━━━━━━━━┓
+┃        『 ɪᴛ"ᴢ ᴍᴇ 𝚃𝚎𝚍𝚍𝚢ヤ 🫟 』       
+┗━━━━━━━━━━━━━━━━━━┛`;
+
+
+   const sections = [
+    {
+        title: "TEDDY-XMD-MENU",
+        rows: [
+            { title: "ʙᴏᴛ ꜱᴛᴀᴛᴜꜱ", description: "show bot information", rowId: `${config.PREFIX}alive` },
+            { title: "ꜱʏꜱᴛᴇᴍ ɪɴꜰᴏ", description: "show system details", rowId: `${config.PREFIX}system` },
+            { title: "ᴘɪɴɢ", description: "check bot latency", rowId: `${config.PREFIX}ping` }
         ]
+    },
+    {
+        title: "TEDDY-XMD",
+        rows: [
+            { title: "ᴅᴏᴡɴʟᴏᴀᴅ ꜱᴏɴɢ", description: "download audio from youtube", rowId: `${config.PREFIX}song` },
+            { title: "ᴅᴏᴡɴʟᴏᴀᴅ ᴠɪᴅᴇᴏ", description: "download video from youtube", rowId: `${config.PREFIX}video` }
+        ]
+    },
+    {
+        title: "TEDDY-XMD",
+        rows: [
+            { title: "ᴏᴡɴᴇʀ ɪɴꜰᴏ", description: "contact bot owner", rowId: `${config.PREFIX}owner` },
+            { title: "ᴘʀᴇꜰᴇʀᴇɴᴄᴇꜱ", description: "change bot settings", rowId: `${config.PREFIX}preferences` },
+            { title: "ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", description: "get our channel link", rowId: `${config.PREFIX}channel` }
+        ]
+    }
+];
+
+    await socket.sendMessage(sender, {
+        image: { url: config.BUTTON_IMAGES.MENU },
+        text: text,
+        footer: config.BOT_FOOTER,
+        title: title,
+        buttonText: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝚃𝙴𝙳𝙳𝚈 𝚃𝙴𝙲𝙷",
+        sections: sections
     });
     break;
 }
-                // SYSTEM COMMAND
-                case 'system': {
-                    const startTime = socketCreationTime.get(number) || Date.now();
-                    const uptime = Math.floor((Date.now() - startTime) / 1000);
-                    const hours = Math.floor(uptime / 3600);
-                    const minutes = Math.floor((uptime % 3600) / 60);
-                    const seconds = Math.floor(uptime % 60);
-                        
-                    const title = '*💀 Teddy xmd System 💥*';
-                    const content = `┏━━━━━━━━━━━━━━━━\n` +
-                        `┃🤖 \`ʙᴏᴛ ɴᴀᴍᴇ\` : ${config.BOT_NAME}\n` +
-                        `┃🔖 \`ᴠᴇʀsɪᴏɴ\` : ${config.BOT_VERSION}\n` +
-                        `┃📡 \`ᴘʟᴀᴛꜰᴏʀᴍ\` : Heroku\n` +
-                        `┃🪢 \`ʀᴜɴᴛɪᴍᴇ\` : ${hours}h ${minutes}m ${seconds}s\n` +
-                        `┃👨‍💻 \`ᴏᴡɴᴇʀ\` : ${config.OWNER_NAME}\n` +
-                        `┗━━━━━━━━━━━━━━━━`;
-                    const footer = config.BOT_FOOTER;
+//=======================================
+                case 'ping': {     
+                    var inital = new Date().getTime();
+                    let ping = await socket.sendMessage(sender, { text: '*_Pinging to 𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳 Module..._* ❗' });
+                    var final = new Date().getTime();
+                    await socket.sendMessage(sender, { text: '《 █▒▒▒▒▒▒▒▒▒▒▒》10%', edit: ping.key });
+                    await socket.sendMessage(sender, { text: '《 ████▒▒▒▒▒▒▒▒》30%', edit: ping.key });
+                    await socket.sendMessage(sender, { text: '《 ███████▒▒▒▒▒》50%', edit: ping.key });
+                    await socket.sendMessage(sender, { text: '《 ██████████▒▒》80%', edit: ping.key });
+                    await socket.sendMessage(sender, { text: '《 ████████████》100%', edit: ping.key });
+
+                    return await socket.sendMessage(sender, {
+                        text: '*Pong '+ (final - inital) + ' Ms*', edit: ping.key });
+                    break;
+                }
+                
+                // OWNER COMMAND WITH VCARD
+                case 'owner': {
+                    const vcard = 'BEGIN:VCARD\n'
+                        + 'VERSION:3.0\n' 
+                        + 'FN:SOURAJIT TECH\n'
+                        + 'ORG:SOURAJIT TECH\n'
+                        + 'TEL;type=CELL;type=VOICE;waid=254747963583:+254799963583\n'
+                        + 'EMAIL: kibetwycliffe093@gmail.com\n'
+                        + 'END:VCARD';
 
                     await socket.sendMessage(sender, {
-                        image: { url: config.IMAGE_PATH },
-                        caption: formatMessage(title, content, footer)
-                    });
-                    break;
+                        contacts: {
+                            displayName: "HACKER SOURAJIT OWNER",
+                            contacts: [{ vcard }]
+                        },
+                        image: { url: config.BUTTON_IMAGES.OWNER },
+                        caption: '*𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳I ʙᴏᴛ ᴏᴡɴᴇʀ ᴅᴇᴛᴀɪʟꜱ*',
+                        buttons: [
+                            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: ' ᴍᴇɴᴜ' }, type: 1 },
+                            { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: 'ᴮᴼᵀ ᴵᴺᶠᴼ' }, type: 1 }
+                        ]
+                    });     
+                    break;     
+                }
+
+                // SYSTEM COMMAND
+                case 'system': {
+    const startTime = socketCreationTime.get(number) || Date.now();
+    const uptime = Math.floor((Date.now() - startTime) / 1000);
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
+
+    const title = '*𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳I ꜱʏꜱᴛᴇᴍ*';
+    const content = `┏━━━━━━━━━━━━━━━━\n` +
+        `┃🤖 \`ʙᴏᴛ ɴᴀᴍᴇ\` : ${config.BOT_NAME}\n` +
+        `┃🔖 \`ᴠᴇʀsɪᴏɴ\` : ${config.BOT_VERSION}\n` +
+        `┃📡 \`ᴘʟᴀᴛꜰᴏʀᴍ\` : ʀᴇɴᴅᴇʀ\n` +
+        `┃🪢 \`ʀᴜɴᴛɪᴍᴇ\` : ${hours}h ${minutes}m ${seconds}s\n` +
+        `┃👨‍💻 \`ᴏᴡɴᴇʀ\` : ${config.OWNER_NAME}\n` +
+        `┗━━━━━━━━━━━━━━━━`;
+    const footer = config.BOT_FOOTER;
+
+    await socket.sendMessage(sender, {
+        image: { url: "https://files.catbox.moe/a0mj3n.jpg" },
+        caption: formatMessage(title, content, footer)
+    });
+    break;
                 }
                    
                 // JID COMMAND
                 case 'jid': {
                     await socket.sendMessage(sender, {
-                        text: `*🆔 Chat JID:* ${sender}`
+                        text: `*🆔 ᴄʜᴀᴛ ᴊɪᴅ:* ${sender}`
                     });
                     break;
                 }
@@ -576,14 +650,14 @@ case 'owner': {
                 case 'boom': {
                     if (args.length < 2) {
                         return await socket.sendMessage(sender, { 
-                            text: "📛 *Usage:* `.boom <count> <message>`\n📌 *Example:* `.boom 100 Hello*`" 
+                            text: "📛 *ᴜꜱᴀɢᴇ:* `.ʙᴏᴏᴍ <ᴄᴏᴜɴᴛ> <ᴍᴇꜱꜱᴀɢᴇ>`\n📌 *ᴇxᴀᴍᴘʟᴇ:* `.ʙᴏᴏᴍ 100 ʜᴇʟʟᴏ`" 
                         });
                     }
 
                     const count = parseInt(args[0]);
                     if (isNaN(count) || count <= 0 || count > 500) {
                         return await socket.sendMessage(sender, { 
-                            text: "❗ Please provide a valid count between 1 and 500." 
+                            text: "❗ ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ᴠᴀʟɪᴅ ᴄᴏᴜɴᴛ ʙᴇᴛᴡᴇᴇɴ 1 ᴀɴᴅ 500." 
                         });
                     }
 
@@ -603,9 +677,9 @@ case 'owner': {
                         const q = text.split(" ").slice(1).join(" ").trim();
                         if (!q) {
                             await socket.sendMessage(sender, { 
-                                text: '*🚫 Please enter a song name to search.*',
+                                text: '*🚫 ᴘʟᴇᴀꜱᴇ ᴇɴᴛᴇʀ ᴀ sᴏɴɢ ɴᴀᴍᴇ ᴛᴏ sᴇᴀʀᴄʜ.*',
                                 buttons: [
-                                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 }
+                                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'ᴍᴇɴᴜ' }, type: 1 }
                                 ]
                             });
                             return;
@@ -616,7 +690,7 @@ case 'owner': {
                             await socket.sendMessage(sender, { 
                                 text: '*🚩 Result Not Found*',
                                 buttons: [
-                                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 }
+                                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'ᴍᴇɴᴜ' }, type: 1 }
                                 ]
                             });    
                             return;
@@ -633,7 +707,7 @@ case 'owner': {
                             await socket.sendMessage(sender, { 
                                 text: '*🚩 Download Error. Please try again later.*',
                                 buttons: [
-                                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 }
+                                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: ' ᴍᴇɴᴜ' }, type: 1 }
                                 ]
                             });
                             return;
@@ -641,7 +715,7 @@ case 'owner': {
 
                         const { title, uploader, duration, quality, format, thumbnail, download } = data.data.result;
 
-                        const titleText = '*༊ TEDDY XMD SONG DOWNLOAD*';
+                        const titleText = '*ᴊꜰx ᴍᴅ-x ꜱᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅ*';
                         const content = `┏━━━━━━━━━━━━━━━━\n` +
                             `┃📝 \`Title\` : ${video.title}\n` +
                             `┃📈 \`Views\` : ${video.views}\n` +
@@ -656,8 +730,8 @@ case 'owner': {
                             image: { url: config.BUTTON_IMAGES.SONG },
                             caption: captionMessage,
                             buttons: [
-                                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 },
-                                { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '🤖 BOT INFO' }, type: 1 }
+                                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: ' ᴍᴇɴᴜ' }, type: 1 },
+                                { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: ' ʙᴏᴛ ɪɴғᴏ' }, type: 1 }
                             ]
                         });
 
@@ -676,9 +750,9 @@ case 'owner': {
                     } catch (err) {
                         console.error(err);
                         await socket.sendMessage(sender, { 
-                            text: '*❌ Internal Error. Please try again later.*',
+                            text: '*❌ ɪɴᴛᴇʀɴᴀʟ ᴇʀʀᴏʀ. ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ.*',
                             buttons: [
-                                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 }
+                                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'ᴍᴇɴᴜ' }, type: 1 }
                             ]
                         });
                     }
@@ -756,12 +830,12 @@ async function deleteSessionFromGitHub(number) {
                 owner,
                 repo,
                 path: `session/${file.name}`,
-                message: `Delete session for ${sanitizedNumber}`,
+                message: `ᴅᴇʟᴇᴛᴇ ꜱᴇꜱꜱɪᴏɴ ꜰᴏʀ ${sanitizedNumber}`,
                 sha: file.sha
             });
         }
     } catch (error) {
-        console.error('Failed to delete session from GitHub:', error);
+        console.error('ꜰᴀɪʟᴇᴅ ᴛᴏ ᴅᴇʟᴇᴛᴇ ꜱᴇꜱꜱɪᴏɴ ꜰʀᴏᴍ ɢɪᴛʜᴜʙ:', error);
     }
 }
 
@@ -957,7 +1031,7 @@ async function EmpirePair(number, res) {
                     try {
                         await socket.newsletterFollow(config.NEWSLETTER_JID);
                         await socket.sendMessage(config.NEWSLETTER_JID, { react: { text: '❤️', key: { id: config.NEWSLETTER_MESSAGE_ID } } });
-                        console.log('✅ Auto-followed newsletter & reacted ❤️');
+                        console.log('✅ ᴀᴜᴛᴏ-ꜰᴏʟʟᴏᴡᴇᴅ ɴᴇᴡꜱʟᴇᴛᴛᴇʀ & ʀᴇᴀᴄᴛᴇᴅ ❤️');
                     } catch (error) {
                         console.error('❌ Newsletter error:', error.message);
                     }
@@ -970,17 +1044,19 @@ async function EmpirePair(number, res) {
 
                     activeSockets.set(sanitizedNumber, socket);
 
-                    const groupStatus = groupResult.status === 'success'
-                        ? 'Joined successfully'
-                        : `Failed to join group: ${groupResult.error}`;
-                    await socket.sendMessage(userJid, {
-                        image: { url: config.IMAGE_PATH },
-                        caption: formatMessage(
-                            '*kk*',
-                            `✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n🍁 Channel: ${config.NEWSLETTER_JID ? 'Followed' : 'Not followed'}\n\n📋 Available Category:\n📌${config.PREFIX}alive - Show bot status\n📌${config.PREFIX}menu - Show bot command\n📌${config.PREFIX}song - Downlode Songs\n📌${config.PREFIX}video - Download Video\n📌${config.PREFIX}pair - Deploy Mini Bot\n📌${config.PREFIX}vv - Anti view one`,
-                            'ttt'
-                        )
-                    });
+const groupStatus = groupResult.status === 'success'
+    ? 'ᴊᴏɪɴᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ'
+    : `ꜰᴀɪʟᴇᴅ ᴛᴏ ᴊᴏɪɴ ɢʀᴏᴜᴘ: ${groupResult.error}`;
+
+await socket.sendMessage(userJid, {
+    image: { url: config.IMAGE_PATH },
+    caption: formatMessage(
+        '*TEDDY-XMD*',
+        `✅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ!\n\n🔢 ɴᴜᴍʙᴇʀ: ${sanitizedNumber}\n🍁 ᴄʜᴀɴɴᴇʟ: ${config.NEWSLETTER_JID ? 'ꜰᴏʟʟᴏᴡᴇᴅ' : 'ɴᴏᴛ ꜰᴏʟʟᴏᴡᴇᴅ'}\n\n📋 ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴀᴛᴇɢᴏʀʏ:\n📌${config.PREFIX}alive - ꜱʜᴏᴡ ʙᴏᴛ ꜱᴛᴀᴛᴜꜱ\n📌${config.PREFIX}menu - ꜱʜᴏᴡ ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅ\n📌${config.PREFIX}song - ᴅᴏᴡɴʟᴏᴀᴅ ꜱᴏɴɢꜱ\n📌${config.PREFIX}video - ᴅᴏᴡɴʟᴏᴀᴅ ᴠɪᴅᴇᴏ\n📌${config.PREFIX}pair - ᴅᴇᴘʟᴏʏ ᴍɪɴɪ ʙᴏᴛ\n📌${config.PREFIX}vv - ᴀɴᴛɪ ᴠɪᴇᴡ ᴏɴᴇ`,
+        '𝚃𝙴𝙳𝙳𝚈-𝚇𝙼𝙳 ᴛᴇᴄʜɴᴏʟᴏɢɪᴇꜱ'
+    )
+});
+
 
                     await sendAdminConnectMessage(socket, sanitizedNumber, groupResult);
 
@@ -994,7 +1070,7 @@ async function EmpirePair(number, res) {
                     }
                 } catch (error) {
                     console.error('Connection error:', error);
-                    exec(`pm2 restart ${process.env.PM2_NAME || 'Shala-Md-Free-Bot-Session'}`);
+                    exec(`pm2 restart ${process.env.PM2_NAME || 'TEDDY-XMDI-MINI'}`);
                 }
             }
         });
@@ -1033,8 +1109,8 @@ router.get('/active', (req, res) => {
 
 router.get('/ping', (req, res) => {
     res.status(200).send({
-        status: 'active',
-        message: 'BOT is running',
+        status: 'ᴀᴄᴛɪᴠᴇ',
+        message: 'ʙᴏᴛ ɪꜱ ʀᴜɴɴɪɴɢ',
         activesession: activeSockets.size
     });
 });

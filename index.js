@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
     console.log(`
-Don't Forget To Give Star ‼️
+ ɢɪᴠᴇ ᴀ ꜱᴛᴀʀ ᴛᴏ 𝚃𝙴𝙳𝙳𝚈-𝚃𝙴𝙲𝙷-𝙰𝙸
 
 
 Server running on http://localhost:` + PORT)
